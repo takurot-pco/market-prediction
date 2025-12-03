@@ -39,6 +39,7 @@
     *   Backend: SQLAlchemy (Async) + Alembic の設定
     *   Userテーブルの初期定義（最小限）
 *   **Acceptance Criteria**: マイグレーションコマンドが成功し、DBにテーブルが作成される。
+*   **Status**: ✅ 完了 (branch: feature/task-1.2-db-setup, Alembic初期マイグレーションでusersテーブル作成、docker-composeにPostgreSQL追加)
 
 ### Task 1.3: CIパイプラインの構築 ✅
 *   **Goal**: PRを出した際に自動テストが走るようにする。

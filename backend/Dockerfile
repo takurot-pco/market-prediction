@@ -13,8 +13,10 @@ COPY pyproject.toml poetry.lock* ./
 RUN poetry config virtualenvs.create false \
     && poetry install --no-dev --no-interaction --no-ansi
 
-# Copy application code
+# Copy application code and Alembic migrations
 COPY app ./app
+COPY alembic.ini .
+COPY alembic ./alembic
 
 # Expose port
 EXPOSE 8000
