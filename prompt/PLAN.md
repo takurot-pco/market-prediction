@@ -21,7 +21,7 @@
 
 ## Phase 1: プロジェクト初期化と基盤構築 (Foundation)
 
-### Task 1.1: リポジトリ構成とボイラープレート作成
+### Task 1.1: リポジトリ構成とボイラープレート作成 ✅
 *   **Goal**: Frontend (Next.js) と Backend (FastAPI) の空プロジェクトを作成し、ローカルで起動できるようにする。
 *   **Details**:
     *   Monorepo構成 (`/frontend`, `/backend`, `/infra`)
@@ -30,6 +30,7 @@
     *   `docker-compose.yml` で両方を起動可能にする
     *   Dockerfile (Backend/Frontend) を作成し、本番ビルド可能にする
 *   **Acceptance Criteria**: `docker-compose up` で "Hello World" が表示される。
+*   **Status**: ✅ 完了 (PR#1)
 
 ### Task 1.2: データベース設計とマイグレーション基盤
 *   **Goal**: PostgreSQLを立ち上げ、Alembicによるマイグレーション環境を整える。
@@ -39,13 +40,14 @@
     *   Userテーブルの初期定義（最小限）
 *   **Acceptance Criteria**: マイグレーションコマンドが成功し、DBにテーブルが作成される。
 
-### Task 1.3: CIパイプラインの構築
+### Task 1.3: CIパイプラインの構築 ✅
 *   **Goal**: PRを出した際に自動テストが走るようにする。
 *   **Details**:
     *   GitHub Actions workflow (`ci.yml`) 作成
     *   Backend: `pytest`, `ruff check`
     *   Frontend: `npm run lint`, `npm run build`
 *   **Acceptance Criteria**: 意図的にエラーを含むコードをpushしてCIが落ち、修正して通ることを確認。
+*   **Status**: ✅ 完了 (PR#1)
 
 ---
 
