@@ -15,14 +15,14 @@ Google Market Predictionをモデルとした、社内向けの予測市場シ�
 
 ## 2. システムアーキテクチャ (System Architecture)
 
-### 2.1. 推奨技術スタック (Azure Base)
-*   **Infrastructure**: Azure App Service (Web Apps) or Azure Container Apps
-*   **Frontend**: React / Next.js / Vue.js (SPA) - Azure Static Web Apps
-*   **Backend**: Python (FastAPI) - Azure App Service for Containers
+### 2.1. 推奨技術スタック (AWS Base)
+*   **Infrastructure**: AWS App Runner or ECS/Fargate（コンテナ実行基盤）
+*   **Frontend**: React / Next.js / Vue.js (SPA) - CloudFront + S3
+*   **Backend**: Python (FastAPI) - App Runner / ECS タスク
     *   *数値計算ライブラリが豊富なPythonが予測エンジンには有利*
-*   **Database**: Azure Database for PostgreSQL (Flexible Server)
-*   **Cache/Queue**: Azure Cache for Redis
-*   **Auth**: Microsoft Entra ID (Azure AD) OIDC連携
+*   **Database**: Amazon RDS for PostgreSQL
+*   **Cache/Queue**: Amazon ElastiCache for Redis / Amazon SQS
+*   **Auth**: Amazon Cognito（または社内IdPのOIDC/SAML連携）
 
 ### 2.2. モジュール構成
 1.  **Auth Service**: 認証・認可

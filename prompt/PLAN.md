@@ -8,10 +8,10 @@
 *   **ブランチ戦略**: GitHub Flow (mainブランチからfeatureブランチを作成し、PRでマージ)
 *   **CI (GitHub Actions)**:
     *   PR作成時: Lint (Ruff/ESLint), Type Check (MyPy/TypeScript), Unit Tests (Pytest/Vitest)
-    *   Mainマージ時: Build Docker Image, Push to Azure Container Registry (ACR)
-*   **CD (Azure DevOps / GitHub Actions)**:
-    *   Dev環境: Mainマージ時に自動デプロイ (Azure Container Apps)
-    *   Staging/Prod: 手動承認後デプロイ
+    *   Mainマージ時: Build Docker Image, Push to Amazon ECR
+*   **CD (GitHub Actions)**:
+    *   Dev環境: Mainマージ時に自動デプロイ (AWS App Runner または ECS/Fargate)
+    *   Staging/Prod: 手動承認後デプロイ（ECRイメージ昇格）
 *   **テスト戦略**:
     *   **Unit Test**: ロジック（特にLMSR計算、精算ロジック）を重点的にカバー。
     *   **Integration Test**: APIエンドポイントの正常系・異常系をDB接続ありでテスト。
@@ -39,6 +39,7 @@
     *   Backend: SQLAlchemy (Async) + Alembic の設定
     *   Userテーブルの初期定義（最小限）
 *   **Acceptance Criteria**: マイグレーションコマンドが成功し、DBにテーブルが作成される。
+*   **Status**: ✅ 完了 (branch: feature/task-1.2-db-setup, Alembic初期マイグレーションでusersテーブル作成、docker-composeにPostgreSQL追加)
 
 ### Task 1.3: CIパイプラインの構築 ✅
 *   **Goal**: PRを出した際に自動テストが走るようにする。
@@ -69,14 +70,14 @@
     *   Layout: ヘッダーにユーザー名と所持ポイントを表示
 *   **Acceptance Criteria**: ログイン後、ヘッダーに自分の名前が表示される。
 
-### Task 2.3: Microsoft Entra ID (Azure AD) 連携
+### Task 2.3: IDプロバイダー連携 (Cognito/社内IdP)
 *   **Goal**: 社内SSOでログインできるようにする。
 *   **Details**:
-    *   Backend: `msal` ライブラリを用いたOIDC認証フローの実装
-    *   Azure AD App Registration の設定手順書作成
-    *   Frontend: MSAL.js によるログインボタン実装
+    *   Backend: Cognito Hosted UI または社内IdP (OIDC/SAML) のフロー実装
+    *   Cognito User Pool / App Client の設定手順書作成
+    *   Frontend: Cognito/IdP向けのログインボタン実装
     *   既存のMock認証との切り替え可能な設計 (環境変数で制御)
-*   **Acceptance Criteria**: Azure ADのテストテナントでログインできる。
+*   **Acceptance Criteria**: Cognitoまたは社内IdPのテナントでログインできる。
 
 ### Task 2.4: ロールベースアクセス制御 (RBAC)
 *   **Goal**: Admin / Moderator / User のロールに応じたAPI権限を実装。

@@ -13,6 +13,9 @@ python = "^3.11"
 fastapi = "^0.123.0"
 uvicorn = {extras = ["standard"], version = "^0.38.0"}
 pydantic-settings = "^2.12.0"
+sqlalchemy = {extras = ["asyncio"], version = "^2.0.36"}
+asyncpg = "^0.30.0"
+alembic = "^1.14.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -22,6 +25,7 @@ pytest-cov = "^7.0.0"
 ruff = "^0.14.7"
 mypy = "^1.19.0"
 httpx = "^0.28.1"
+aiosqlite = "^0.20.0"
 
 [build-system]
 requires = ["poetry-core"]
