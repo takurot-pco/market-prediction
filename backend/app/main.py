@@ -21,12 +21,12 @@ app.add_middleware(
 
 
 @app.get("/")
-async def root():
+async def root() -> dict[str, str]:
     """Health check endpoint"""
     return {"message": "Hello World", "status": "ok"}
 
 
 @app.get("/health")
-async def health():
+async def health() -> dict[str, str]:
     """Health check endpoint"""
     return {"status": "healthy"}
