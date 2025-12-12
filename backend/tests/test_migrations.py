@@ -47,4 +47,9 @@ async def test_initial_migration_creates_users_table(tmp_path, monkeypatch) -> N
         assert result.scalar() == "users"
 
     columns = await get_table_columns(engine, "users")
-    assert {"id", "email", "name", "role", "created_at"}.issubset(columns)
+    # Check original columns + new columns added in migration 20241212_000001
+    expected_columns = {
+        "id", "email", "name", "role", "created_at",
+        "department", "balance", "updated_at",
+    }
+    assert expected_columns.issubset(columns), f"Missing columns: {expected_columns - columns}"

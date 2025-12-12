@@ -9,9 +9,9 @@ RUN pip install poetry==2.2.1
 # Copy dependency files
 COPY pyproject.toml poetry.lock* ./
 
-# Install dependencies
+# Install dependencies (production only)
 RUN poetry config virtualenvs.create false \
-    && poetry install --no-dev --no-interaction --no-ansi
+    && poetry install --only main --no-interaction --no-ansi
 
 # Copy application code and Alembic migrations
 COPY app ./app
