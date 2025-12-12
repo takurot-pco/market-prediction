@@ -15,5 +15,25 @@ class Settings(BaseSettings):
         alias="DATABASE_URL",
     )
 
+    # JWT Settings
+    jwt_secret_key: str = Field(
+        default="dev-secret-key-change-in-production",
+        alias="JWT_SECRET_KEY",
+    )
+    jwt_algorithm: str = Field(
+        default="HS256",
+        alias="JWT_ALGORITHM",
+    )
+    jwt_expire_minutes: int = Field(
+        default=60 * 24,  # 24 hours
+        alias="JWT_EXPIRE_MINUTES",
+    )
+
+    # Auth Provider (mock for development, azure for production)
+    auth_provider: str = Field(
+        default="mock",
+        alias="AUTH_PROVIDER",
+    )
+
 
 settings = Settings()
