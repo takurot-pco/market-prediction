@@ -146,7 +146,7 @@
         *   `POST /api/v1/categories` - カテゴリ作成 (Admin)
     *   初期カテゴリのSeedデータ（プロダクト、営業、人事、業界動向）
 *   **Acceptance Criteria**: カテゴリの作成・一覧取得ができる。
-*   **Status**: 未着手
+*   **Status**: ✅ 完了
 
 ### Task 3.2: LMSRロジックの実装とテスト (Backend)
 *   **Goal**: 予測市場の核となる価格計算ロジックを実装する。

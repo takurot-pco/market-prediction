@@ -26,3 +26,7 @@ async def get_session() -> AsyncIterator[AsyncSession]:
     """Provide a scoped async session (FastAPI dependency friendly)."""
     async with AsyncSessionLocal() as session:
         yield session
+
+
+# Alias for compatibility
+get_db = get_session
