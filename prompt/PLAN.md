@@ -98,7 +98,7 @@
 *   **Acceptance Criteria**: ログイン後、ヘッダーに自分の名前とポイント残高が表示される。
 *   **Status**: ✅ 完了 (PR#7)
 
-### Task 2.3: Microsoft Entra ID (Azure AD) 連携
+### Task 2.3: Microsoft Entra ID (Azure AD) 連携 ⏳
 *   **Goal**: 社内SSOでログインできるようにする。
 *   **Details**:
     *   Backend: MSAL (Microsoft Authentication Library) を使用したOIDCフロー実装
@@ -106,6 +106,7 @@
     *   Frontend: Microsoft ログインボタン実装
     *   既存のMock認証との切り替え可能な設計 (環境変数 `AUTH_PROVIDER` で制御)
 *   **Acceptance Criteria**: Azure ADテナントでログインできる。
+*   **Recommended Timing**: Phase 7 (本番環境構築) の直前。開発中はMock認証で十分。
 *   **Status**: 未着手
 
 ### Task 2.4: ロールベースアクセス制御 (RBAC) ✅
@@ -120,7 +121,7 @@
 *   **Acceptance Criteria**: 一般Userが管理APIを叩くと403 `FORBIDDEN` エラーになる。
 *   **Status**: ✅ 完了 (PR#8)
 
-### Task 2.5: ユーザー管理API (Backend)
+### Task 2.5: ユーザー管理API (Backend) ⏳
 *   **Goal**: ユーザー情報の取得・更新API。
 *   **Details**:
     *   API (SPEC Section 5 準拠):
@@ -129,6 +130,7 @@
         *   `GET /api/v1/users/{id}` - ユーザー情報取得 (Admin)
         *   `PUT /api/v1/users/{id}/role` - ユーザーロール変更 (Admin)
 *   **Acceptance Criteria**: プロフィール更新が永続化される。
+*   **Recommended Timing**: Phase 5 (管理画面) の前。管理画面でユーザー管理機能を使用するため。
 *   **Status**: 未着手
 
 ---
@@ -479,4 +481,5 @@
 | ✅ | 完了 |
 | 🔧 | 要修正（既存実装がSPECと乖離） |
 | 🚧 | 進行中 |
+| ⏳ | 後回し（Recommended Timing参照） |
 | 未着手 | 未着手 |
