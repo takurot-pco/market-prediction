@@ -41,7 +41,7 @@
 *   **Acceptance Criteria**: マイグレーションコマンドが成功し、DBにテーブルが作成される。
 *   **Status**: ✅ 完了 (PR#2)
 
-### Task 1.2.1: Userモデルの拡張（SPEC準拠）🔧
+### Task 1.2.1: Userモデルの拡張（SPEC準拠）✅
 *   **Goal**: 現在のUserモデルをSPEC.mdのデータモデル設計に準拠させる。
 *   **Details**:
     *   `id`: Integer → UUID に変更
@@ -50,7 +50,7 @@
     *   `updated_at`: TIMESTAMP 追加
     *   既存マイグレーションの修正または新規マイグレーション作成
 *   **Acceptance Criteria**: Userテーブルが SPEC.md Section 4 の定義と一致する。
-*   **Status**: 🔧 要対応
+*   **Status**: ✅ 完了 (PR#4)
 
 ### Task 1.3: CIパイプラインの構築 ✅
 *   **Goal**: PRを出した際に自動テストが走るようにする。
@@ -61,7 +61,7 @@
 *   **Acceptance Criteria**: 意図的にエラーを含むコードをpushしてCIが落ち、修正して通ることを確認。
 *   **Status**: ✅ 完了 (PR#1)
 
-### Task 1.4: 共通エラーハンドリング基盤 (Backend)
+### Task 1.4: 共通エラーハンドリング基盤 (Backend) ✅
 *   **Goal**: SPEC Section 8 に定義されたエラーコードを統一的に返却する基盤を作成。
 *   **Details**:
     *   `app/core/exceptions.py`: カスタム例外クラス定義
@@ -69,13 +69,13 @@
     *   `app/core/error_handlers.py`: FastAPI例外ハンドラー
     *   エラーレスポンススキーマ: `{ "error_code": "...", "message": "...", "details": {...} }`
 *   **Acceptance Criteria**: 各エラーがSPEC定義のHTTPステータスとエラーコードで返却される。
-*   **Status**: 未着手
+*   **Status**: ✅ 完了 (PR#5)
 
 ---
 
 ## Phase 2: 認証とユーザー管理 (Auth & Users)
 
-### Task 2.1: ユーザーモデルと認証基盤 (Backend)
+### Task 2.1: ユーザーモデルと認証基盤 (Backend) ✅
 *   **Goal**: ユーザー情報を管理し、JWTによる認証ガードを作成する。
 *   **Details**:
     *   Auth API (SPEC Section 5 準拠):
@@ -86,9 +86,9 @@
     *   Dependency: `get_current_user` の実装
     *   JWT トークン生成・検証ロジック
 *   **Acceptance Criteria**: 保護されたAPIエンドポイントにアクセス制御がかかる。
-*   **Status**: 未着手
+*   **Status**: ✅ 完了 (PR#6)
 
-### Task 2.2: 認証UIとユーザーコンテキスト (Frontend)
+### Task 2.2: 認証UIとユーザーコンテキスト (Frontend) ✅
 *   **Goal**: ログイン画面と、ログイン状態の保持。
 *   **Details**:
     *   Login Page
@@ -96,7 +96,7 @@
     *   Layout: ヘッダーにユーザー名と所持ポイントを表示
     *   ログアウト機能
 *   **Acceptance Criteria**: ログイン後、ヘッダーに自分の名前とポイント残高が表示される。
-*   **Status**: 未着手
+*   **Status**: ✅ 完了 (PR#7)
 
 ### Task 2.3: Microsoft Entra ID (Azure AD) 連携
 *   **Goal**: 社内SSOでログインできるようにする。
@@ -108,7 +108,7 @@
 *   **Acceptance Criteria**: Azure ADテナントでログインできる。
 *   **Status**: 未着手
 
-### Task 2.4: ロールベースアクセス制御 (RBAC)
+### Task 2.4: ロールベースアクセス制御 (RBAC) ✅
 *   **Goal**: Admin / Moderator / User のロールに応じたAPI権限を実装。
 *   **Details**:
     *   Backend: `RoleChecker` Dependency の実装
@@ -118,7 +118,7 @@
         *   `Admin`: マーケット解決・キャンセル、ユーザー管理
     *   Frontend: ロールに応じたUI出し分け（管理メニューの表示/非表示）
 *   **Acceptance Criteria**: 一般Userが管理APIを叩くと403 `FORBIDDEN` エラーになる。
-*   **Status**: 未着手
+*   **Status**: ✅ 完了 (PR#8)
 
 ### Task 2.5: ユーザー管理API (Backend)
 *   **Goal**: ユーザー情報の取得・更新API。
