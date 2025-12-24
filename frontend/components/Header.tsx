@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useAuthStore } from "@/lib/store/auth";
+import { RoleGate } from "@/components/RoleGate";
 
 export function Header() {
   const { user, isAuthenticated, isLoading, logout } = useAuthStore();
@@ -15,11 +16,45 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo / Title */}
-          <Link href="/" className="flex items-center">
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
-              Market Prediction
-            </span>
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/" className="flex items-center">
+              <span className="text-xl font-bold text-gray-900 dark:text-white">
+                Market Prediction
+              </span>
+            </Link>
+
+            {/* Navigation - only show when authenticated */}
+            {isAuthenticated && user && (
+              <nav className="hidden md:flex items-center gap-4">
+                <Link
+                  href="/markets"
+                  className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                >
+                  Markets
+                </Link>
+
+                {/* Moderator+ menu items */}
+                <RoleGate requiredRole="moderator">
+                  <Link
+                    href="/admin/markets"
+                    className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >
+                    Manage Markets
+                  </Link>
+                </RoleGate>
+
+                {/* Admin-only menu items */}
+                <RoleGate requiredRole="admin">
+                  <Link
+                    href="/admin/users"
+                    className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >
+                    Users
+                  </Link>
+                </RoleGate>
+              </nav>
+            )}
+          </div>
 
           {/* Right side */}
           <div className="flex items-center gap-4">
