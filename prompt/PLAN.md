@@ -161,7 +161,7 @@
         *   境界値テスト（極端な数量での挙動）
         *   Binary/Categorical両対応の確認
 *   **Acceptance Criteria**: PytestでLMSRの計算結果が正しいことを検証済み。
-*   **Status**: 未着手
+*   **Status**: ✅ 完了
 
 ### Task 3.3: マーケット・アウトカムモデル (Backend)
 *   **Goal**: マーケットとアウトカムのデータモデルを作成。
